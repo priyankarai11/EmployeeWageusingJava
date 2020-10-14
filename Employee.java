@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.Random;
 public class Employee {
 	public static void main(String[] args){
@@ -5,7 +6,9 @@ public class Employee {
 	Random rand=new Random();
         int i=rand.nextInt(2);
 	int wageperHour=20;
-	int hourperDay=8;
+	int hourperDay=8,empHour=0;
+	String empName=" ";
+	int salary=0 , totalSal=0 , fullTime=1 , partTime=2;
 	int parttimeHoursperDay=4;
         if (i == 1)
         {
@@ -20,10 +23,27 @@ public class Employee {
 	int wageperDay=(wageperHour * hourperDay);
 	System.out.println("Daily Employee wage:"+wageperDay);
 
-	System.out.println("****************************************");
-        System.out.println("Calculating part time Employee and wage");
-        int parttimewageperDay=(wageperHour * parttimeHoursperDay);
-        System.out.println("Daily Employee wage:"+parttimewageperDay);
+
+        System.out.println("****************************************");
+        System.out.println("Enter number of working days");
+	Scanner sc=new Scanner(System.in);
+	int num=sc.nextInt();
+	for(int day=1;day<=num;day++)
+	{
+		int empCheck=rand.nextInt(2);
+		switch(empCheck){
+		case 0 :empName="Fulltime";
+			empHour=8;
+			break;
+		case 1 :empName="Parttime";
+			empHour=4;
+			break;
+		}
+		salary=(empHour*wageperHour);
+		System.out.println("Salary of " + empName + " on the " +day+ " is " +salary);
+		totalSal=(totalSal+salary);
+	}
+	System.out.println("Total Salary="+totalSal);
 
 }
 }
