@@ -6,7 +6,7 @@ public class Employee {
 	Random rand=new Random();
         int i=rand.nextInt(2);
 	int wageperHour=20;
-	int hourperDay=8,empHour=0;
+	int hourperDay=8,empHour=0,num=20;
 	String empName=" ";
 	int salary=0 , totalSal=0 , fullTime=1 , partTime=2;
 	int parttimeHoursperDay=4;
@@ -26,8 +26,9 @@ public class Employee {
 
         System.out.println("****************************************");
         System.out.println("Enter number of working days");
-	Scanner sc=new Scanner(System.in);
-	int num=sc.nextInt();
+	System.out.println("Calculate wages for month");
+	//Scanner sc=new Scanner(System.in);
+	//int num=sc.nextInt();
 	for(int day=1;day<=num;day++)
 	{
 		int empCheck=rand.nextInt(2);
