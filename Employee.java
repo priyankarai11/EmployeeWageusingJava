@@ -29,20 +29,22 @@ public class Employee {
 	System.out.println("Calculate wages for month");
 	//Scanner sc=new Scanner(System.in);
 	//int num=sc.nextInt();
-	for(int day=1;day<=num;day++)
+	int day=1;
+	while(day<=20 && empHour<=100)
 	{
 		int empCheck=rand.nextInt(2);
 		switch(empCheck){
 		case 0 :empName="Fulltime";
-			empHour=8;
+			empHour+=8;
 			break;
 		case 1 :empName="Parttime";
-			empHour=4;
+			empHour+=4;
 			break;
 		}
 		salary=(empHour*wageperHour);
 		System.out.println("Salary of " + empName + " on the " +day+ " is " +salary);
 		totalSal=(totalSal+salary);
+		day++;
 	}
 	System.out.println("Total Salary="+totalSal);
 
