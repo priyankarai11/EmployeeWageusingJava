@@ -6,7 +6,7 @@ public class Employee {
 	Random rand=new Random();
         int i=rand.nextInt(2);
 	int wageperHour=20;
-	int hourperDay=8,empHour=0,num=20;
+	int hourperDay=8,empHour=1,day=1;
 	String empName=" ";
 	int salary=0 , totalSal=0 , fullTime=1 , partTime=2;
 	int parttimeHoursperDay=4;
@@ -29,7 +29,8 @@ public class Employee {
 	System.out.println("Calculate wages for month");
 	//Scanner sc=new Scanner(System.in);
 	//int num=sc.nextInt();
-	for(int day=1;day<=num;day++)
+	int index=1;
+	while(index<=day && index<=empHour)
 	{
 		int empCheck=rand.nextInt(2);
 		switch(empCheck){
@@ -43,6 +44,7 @@ public class Employee {
 		salary=(empHour*wageperHour);
 		System.out.println("Salary of " + empName + " on the " +day+ " is " +salary);
 		totalSal=(totalSal+salary);
+		index++;
 	}
 	System.out.println("Total Salary="+totalSal);
 
