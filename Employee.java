@@ -2,11 +2,7 @@ import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
 
-interface EmployeeWageInterface {
-    double calculateWage(EmpWageBuilder[] array,int index);
-}
-
-class EmpWageBuilder implements EmployeeWageInterface {
+class EmpWageBuilder{
     public String Company;
     public int NUM_WORK_DAYS;
     public double WAGE_PER_HOUR;
@@ -66,8 +62,7 @@ class EmpWageBuilder implements EmployeeWageInterface {
     }
 }
 
-public class Employee
- extends EmpWageBuilder{
+public class Employee extends EmpWageBuilder{
     Employee(String Company, int NUM_WORK_DAYS, double WAGE_PER_HOUR, int WORK_HOUR_PER_MONTH) {
         super( Company, NUM_WORK_DAYS, WAGE_PER_HOUR, WORK_HOUR_PER_MONTH );
     }
@@ -104,7 +99,7 @@ public class Employee
 
         checkAttendance();
 
-        System.out.println("Given details of Companies");
+        System.out.println("Multiple Company Details");
         for(Employee details:array){
             System.out.println(" ");
             System.out.println(details);
