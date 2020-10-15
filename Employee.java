@@ -2,7 +2,11 @@ import java.util.*;
 import java.util.Random;
 import java.util.Scanner;
 
-class EmpWageBuilder{
+interface EmployeeWageInterface {
+    double empWage(List<EmpWageBuilder> arraylist,int index);
+}
+
+class EmpWageBuilder implements EmployeeWageInterface{
     public String Company;
     public int NUM_WORK_DAYS;
     public double WAGE_PER_HOUR;
@@ -15,7 +19,7 @@ class EmpWageBuilder{
         this.WORK_HOUR_PER_MONTH = WORK_HOUR_PER_MONTH;
     }
 
-    public double calculateWage(EmpWageBuilder[] array,int index) {
+    public double Employee(EmpWageBuilder[] arraylist,int index) {
         double wage;
         int HOURS_PER_DAY = 0;
         String str = "";
@@ -25,9 +29,9 @@ class EmpWageBuilder{
         int PART_TIME_HOUR=0;
         Random rand = new Random();
         Map<String,Integer> map = new HashMap<>();
-        System.out.println("Calculating Wages for a month of "+array[index].Company+" ");
-        for(int i=1;i<=array[index].NUM_WORK_DAYS;i++) {
-            if(TOTAL_HOURS <= array[index].WORK_HOUR_PER_MONTH) {
+        System.out.println("Calculating Wages for a month of "+arraylist[index].Company+" ");
+        for(int i=1;i<=arraylist[index].NUM_WORK_DAYS;i++) {
+            if(TOTAL_HOURS <= arraylist[index].WORK_HOUR_PER_MONTH) {
                 int empCheck=rand.nextInt(2);
                 switch (empCheck) {
                     case 1:
@@ -45,7 +49,7 @@ class EmpWageBuilder{
                         map.put(str,PART_TIME_HOUR);
                         break;
                 }
-                wage = (HOURS_PER_DAY) * array[index].WAGE_PER_HOUR;
+                wage = (HOURS_PER_DAY) * arraylist[index].WAGE_PER_HOUR;
                 TOTAL_SALARY += wage;
             } else {
                 break;
@@ -89,25 +93,24 @@ public class Employee extends EmpWageBuilder{
     public static void main(String[] args){
         System.out.println("Welcome to Employee Computation program\n");
 
-        Employee[] array = new Employee[2];
+	List<EmpWageBuilder> arraylist = new ArrayList<>();
 
         Employee bridgeLabz = new Employee("Philips",22,200,176);
         Employee wipro = new Employee("Wipro",20,150,165);
 
-        array[0] = bridgeLabz;
-        array[1] = wipro;
+        arraylist.add(bridgeLabz);
+        arraylist.add(wipro);
 
         checkAttendance();
 
         System.out.println("Multiple Company Details");
-        for(Employee details:array){
+        for(EmpWageBuilder details:arraylist){
             System.out.println(" ");
             System.out.println(details);
         }
         System.out.println("*----------------------------------------------*");
 
-        //Employee wage calculation
-        System.out.println("Total Salary = "+bridgeLabz.calculateWage(array,0)+"\n");
-        System.out.println("Total Salary = "+wipro.calculateWage(array,1)+"\n");
+        System.out.println("Total Salary = "+bridgeLabz.empWage(arraylist,0)+"\n");
+        System.out.println("Total Salary = "+wipro.empWage(arraylist,1)+"\n");
     }
 }
