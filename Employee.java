@@ -29,8 +29,9 @@ class EmpWageBuilder implements EmployeeWageInterface{
         //int FULL_TIME_HOUR=0;
         //int PART_TIME_HOUR=0;
         Random rand = new Random();
+	System.out.println("******************************************************************");
         Map<Integer,Double> map = new HashMap<>();
-        System.out.println("Calculating Wages for a month of "+arraylist.get(index).Company+" ");
+        System.out.println("Calculating Wages for a Particular Company  : "+arraylist.get(index).Company+" ");
         for(int i=1;i<=arraylist.get(index).NUM_WORK_DAYS;i++) {
             if(TOTAL_HOURS <= arraylist.get(index).WORK_HOUR_PER_MONTH) {
                 int empCheck=rand.nextInt(2);
@@ -61,10 +62,19 @@ class EmpWageBuilder implements EmployeeWageInterface{
         System.out.println();
         System.out.println(arraylist.get(index).Company+" Total Working hours = "+TOTAL_HOURS);
         salaryMap.put(arraylist.get(index).Company,TOTAL_SALARY);
-    }
+	}
+	
+	public void display(String Company){
+        System.out.println(Company+" : "+salaryMap.get(Company));
+	   
+ }
 }
 
-public class Employee{
+	public class Employee extends EmpWageBuilder{
+    		Employee(String Company, int NUM_WORK_DAYS, double WAGE_PER_HOUR, int WORK_HOUR_PER_MONTH) {
+        	super( Company, NUM_WORK_DAYS, WAGE_PER_HOUR, WORK_HOUR_PER_MONTH );
+    	}
+
     public static void checkAttendance() {
         System.out.println("Checking Whether Employee Present Or Absent");
 	Random rand = new Random();
@@ -91,7 +101,6 @@ public class Employee{
         arraylist.add(wipro);
 
         checkAttendance();
-        System.out.println("*----------------------------------------------*");
 
         bridgeLabz.empWage(arraylist,0);
         wipro.empWage(arraylist,1);
